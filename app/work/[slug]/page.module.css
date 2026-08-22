@@ -1,0 +1,161 @@
+.header {
+  padding-top: calc(var(--space-hero) + var(--space-small));
+  padding-bottom: var(--space-large);
+  max-width: 760px;
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding-top: calc(var(--space-large) + var(--space-small));
+  }
+}
+
+.eyebrow {
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-small);
+}
+
+.brief {
+  margin-top: var(--space-medium);
+  color: var(--text-secondary);
+}
+
+.metaList {
+  margin: var(--space-large) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-large) var(--space-medium-lg);
+  padding-top: var(--space-medium);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaItem dt {
+  color: var(--text-secondary);
+}
+
+.metaItem dd {
+  margin: 0;
+}
+
+/* Artwork — the case study's primary focus. object-fit: contain never
+   crops or distorts; the orientation-based box approximates the image's
+   own shape until real dimensions are supplied. */
+.primaryMediaWrap {
+  padding-bottom: var(--space-section);
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.image {
+  object-fit: contain;
+}
+
+.mediaPortrait {
+  aspect-ratio: 4 / 5;
+}
+
+.mediaLandscape {
+  aspect-ratio: 3 / 2;
+}
+
+.mediaSquare {
+  aspect-ratio: 1 / 1;
+}
+
+.supporting {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gutter-mobile);
+  padding-bottom: var(--space-major-section);
+}
+
+@media (min-width: 768px) {
+  .supporting {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gutter-tablet);
+  }
+}
+
+.supportingMedia {
+  margin: 0;
+}
+
+/* Previous / Next / Back to Work */
+.caseNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-medium);
+  padding-block: var(--space-large);
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 767px) {
+  .caseNav {
+    flex-wrap: wrap;
+  }
+}
+
+.caseNavSide {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.caseNavSideEnd {
+  justify-content: flex-end;
+}
+
+.caseNavLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-small);
+  min-height: 44px;
+  padding: var(--space-micro);
+  border-radius: var(--radius);
+  color: inherit;
+  min-width: 0;
+}
+
+.caseNavLinkEnd {
+  text-align: right;
+}
+
+.caseNavDirection {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  transition: color var(--duration-standard) var(--ease-in-out);
+}
+
+.caseNavLink:hover .caseNavDirection,
+.caseNavLink:focus-visible .caseNavDirection {
+  color: var(--accent-primary);
+}
+
+.caseNavLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.caseNavCaption {
+  color: var(--text-secondary);
+}
+
+.backLink {
+  flex-shrink: 0;
+  min-height: 44px;
+}
