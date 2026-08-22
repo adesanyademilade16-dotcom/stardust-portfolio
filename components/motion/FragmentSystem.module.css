@@ -1,0 +1,41 @@
+/*
+  Signature STARDUST motion: FRAGMENT → ALIGN → COMPOSE.
+  Runs once on mount, ~600ms total, deterministic grid-aligned positions.
+  No particles, no stars, no continuous movement — settles into a static
+  composed mark and stays there (Phase 5 §1 / Phase 7 §02 / Phase 9 §11).
+*/
+
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+}
+
+.fragment {
+  position: absolute;
+  background: var(--text-primary);
+  border-radius: 1px;
+  opacity: 0;
+  transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot));
+  animation: settle var(--duration-major) var(--ease-out) forwards;
+  animation-delay: var(--delay);
+}
+
+.fragment[data-accent='true'] {
+  background: var(--accent-primary);
+}
+
+@keyframes settle {
+  0% {
+    opacity: 0;
+    transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot));
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
