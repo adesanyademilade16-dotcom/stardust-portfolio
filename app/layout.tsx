@@ -35,7 +35,10 @@ export const metadata: Metadata = {
   },
   description,
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon/favicon.ico', sizes: 'any' },
+      { url: '/favicon/icon.svg', type: 'image/svg+xml' },
+    ],
   },
   openGraph: {
     title,
