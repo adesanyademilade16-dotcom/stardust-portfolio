@@ -9,11 +9,35 @@
   gap: var(--space-major-section);
 }
 
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-large);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@media (min-width: 1200px) {
+  .top {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 .intro {
   display: flex;
   flex-direction: column;
   gap: var(--space-medium);
   max-width: 640px;
+}
+
+.intro h2 {
+  margin: 0;
+}
+
+.closingMark {
+  flex-shrink: 0;
+  opacity: 0.9;
 }
 
 .channels {

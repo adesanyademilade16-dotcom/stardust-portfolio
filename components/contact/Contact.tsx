@@ -1,26 +1,33 @@
 import { ContentRequired } from '@/components/ui/ContentRequired';
 import { Logo } from '@/components/brand/Logo';
+import { FragmentSystem } from '@/components/motion/FragmentSystem';
 import { profile } from '@/data/about';
 import styles from './Contact.module.css';
 
 /**
- * Contact (Phase 9, Step 8 — final homepage section).
- *
- * Closing statement, email, and LinkedIn URL have not been supplied and
- * are never invented (Phase 9 §26 Content Placeholder Policy) — each
- * renders as a ContentRequired placeholder with the structure already in
- * place for real values. The compact Compose mark below closes the page
- * on the same fragment/alignment motif that opens it in the hero.
+ * Contact (visual redesign pass) — the page's one deliberately dark
+ * section, per the redesign brief ("dark/tonal background is allowed
+ * using the existing approved ink color"). The fragment system reappears
+ * here at a larger scale, resolving the FRAGMENT → ALIGN → COMPOSE →
+ * EXPERIENCE arc the hero opens with. Content is unchanged — closing
+ * statement, email, and LinkedIn are still ContentRequired until supplied.
  */
 export function Contact() {
   return (
-    <section id="contact" className={styles.section} aria-label="Contact">
+    <section id="contact" className={`${styles.section} tone-ink`} aria-label="Contact">
       <div className={`container ${styles.inner}`}>
-        <div className={styles.intro}>
-          <h2 className="text-h2">Contact</h2>
-          <p className="text-body-large" style={{ color: 'var(--text-secondary)' }}>
-            <ContentRequired label="Contact — closing statement" />
-          </p>
+        <div className={styles.top}>
+          <div className={styles.intro}>
+            <span className="section-index" aria-hidden="true">
+              05
+            </span>
+            <h2 className="text-display-l">Contact</h2>
+            <p className="text-body-large">
+              <ContentRequired label="Contact — closing statement" />
+            </p>
+          </div>
+
+          <FragmentSystem className={styles.closingMark} maxWidth={200} />
         </div>
 
         <dl className={styles.channels}>
