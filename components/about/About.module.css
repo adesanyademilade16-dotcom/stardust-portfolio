@@ -1,0 +1,46 @@
+.section {
+  padding-block: var(--space-major-section);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+  max-width: 640px;
+  margin-bottom: var(--space-major-section);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-large);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter-tablet);
+  }
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+}
+
+.experienceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+}
+
+.experienceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
