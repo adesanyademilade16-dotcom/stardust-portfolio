@@ -30,10 +30,19 @@ const FRAGMENTS: Fragment[] = [
   { top: 44, left: 62, width: 30, height: 14, startX: 20, startY: -14, startRotation: 4, delayMs: 300, accent: true },
 ];
 
-export function FragmentSystem({ className }: { className?: string }) {
+type FragmentSystemProps = {
+  className?: string;
+  /** Overrides the default 220px stage cap — used where the composition
+   * needs to act as a real graphic element (hero, contact) rather than a
+   * small decorative mark. */
+  maxWidth?: number;
+};
+
+export function FragmentSystem({ className, maxWidth }: FragmentSystemProps) {
   return (
     <div
       className={`${styles.stage} ${className ?? ''}`}
+      style={maxWidth ? { maxWidth: `${maxWidth}px` } : undefined}
       role="presentation"
       aria-hidden="true"
     >
