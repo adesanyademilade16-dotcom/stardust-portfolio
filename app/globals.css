@@ -127,6 +127,57 @@ a {
   border-bottom-color: var(--accent-primary);
 }
 
+/*
+  Editorial section furniture (visual redesign pass).
+  Two reusable devices used across Hero/Work/About/Capabilities/Contact so
+  the page reads as one composed system rather than isolated white blocks:
+
+  - .section-index — large ghost numeral marking each major section
+  - .index-label    — small tracked numeral used inline (project/list index)
+  - .tone-surface / .tone-ink — tonal background shifts. Both override the
+    shared color tokens locally, so any component using var(--text-secondary)
+    or var(--border-subtle) automatically adapts within that section without
+    per-component edits.
+*/
+.section-index {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+  line-height: 1;
+  color: var(--border-subtle);
+  margin-bottom: var(--space-small);
+}
+
+.index-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.tone-surface {
+  background: var(--surface);
+}
+
+.tone-ink {
+  background: var(--text-primary);
+  color: var(--background-primary);
+  /* Overriding --text-primary itself (not just the inherited `color`)
+     matters because several components reference var(--text-primary)
+     directly (Logo fill, FragmentSystem fill) rather than inheriting
+     color — without this they'd render dark-on-dark and disappear. */
+  --text-primary: var(--background-primary);
+  --text-secondary: rgba(247, 244, 239, 0.65);
+  --border-subtle: rgba(247, 244, 239, 0.2);
+  --focus-ring: var(--background-primary);
+}
+
+.tone-ink .section-index {
+  color: rgba(247, 244, 239, 0.14);
+}
+
 /* Development-only content placeholder — must never ship to production
    (Phase 9 §26 Content Placeholder Policy) */
 .content-required {
