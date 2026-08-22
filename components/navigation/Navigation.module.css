@@ -1,0 +1,106 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky-nav);
+  background: color-mix(in srgb, var(--background-primary) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid transparent;
+  transition: padding var(--duration-standard) var(--ease-in-out),
+    border-color var(--duration-standard) var(--ease-in-out);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-medium);
+}
+
+.navCompressed .navInner {
+  padding-block: var(--space-small);
+}
+
+.navCompressed {
+  border-bottom-color: var(--border-subtle);
+}
+
+.links {
+  display: none;
+  align-items: center;
+  gap: var(--space-large);
+}
+
+@media (min-width: 768px) {
+  .links {
+    display: flex;
+  }
+}
+
+.link {
+  position: relative;
+  color: var(--text-primary);
+  padding-block: 4px;
+  transition: color var(--duration-standard) var(--ease-in-out);
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--accent-primary);
+}
+
+.link[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--accent-primary);
+}
+
+.menuTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+@media (min-width: 768px) {
+  .menuTrigger {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay-menu);
+  background: var(--background-primary);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-large) var(--outer-margin-mobile);
+  animation: fadeSlideIn var(--duration-reveal) var(--ease-out);
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileLink {
+  padding-block: var(--space-medium);
+  border-bottom: 1px solid var(--border-subtle);
+}
