@@ -1,0 +1,17 @@
+.section {
+  padding-block: var(--space-major-section);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.header {
+  margin-bottom: var(--space-large);
+}
+
+.grid {
+  align-items: start;
+}
+
+.empty {
+  max-width: 46ch;
+  color: var(--text-secondary);
+}

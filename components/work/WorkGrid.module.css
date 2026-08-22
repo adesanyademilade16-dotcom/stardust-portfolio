@@ -1,0 +1,26 @@
+.section {
+  padding-block: var(--space-major-section);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.header {
+  margin-bottom: var(--space-large);
+}
+
+.empty {
+  max-width: 46ch;
+  color: var(--text-secondary);
+}
+
+.collectionBlock + .collectionBlock {
+  margin-top: var(--space-major-section);
+}
+
+.collectionLabel {
+  margin: 0 0 var(--space-medium);
+  color: var(--text-secondary);
+}
+
+.grid {
+  align-items: start;
+}

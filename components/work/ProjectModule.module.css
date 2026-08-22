@@ -1,0 +1,135 @@
+.module {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+/* Grid placement — mobile-first, matches the global 4/8/12-column grid.
+   Step 5 §desktop: strongest project gets the most visual weight; the rest
+   use varied proportions so no two adjacent modules read as identical. */
+.large,
+.wide,
+.standard,
+.tall,
+.compact {
+  grid-column: span 4;
+}
+
+@media (min-width: 768px) {
+  .large,
+  .wide {
+    grid-column: span 8;
+  }
+}
+
+@media (min-width: 1200px) {
+  .large {
+    grid-column: span 7;
+  }
+  .standard {
+    grid-column: span 5;
+  }
+  .wide {
+    grid-column: span 12;
+  }
+  .tall {
+    grid-column: span 4;
+  }
+  .compact {
+    grid-column: span 4;
+  }
+}
+
+/* Artwork — orientation drives the box, never a universal ratio.
+   object-fit: cover avoids distortion (no stretching); it fills the
+   author-declared orientation bucket without forcing an exact crop
+   assumption we don't have data for. */
+.media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.mediaPortrait {
+  aspect-ratio: 4 / 5;
+}
+
+.mediaLandscape {
+  aspect-ratio: 3 / 2;
+}
+
+.mediaSquare {
+  aspect-ratio: 1 / 1;
+}
+
+/* Wide variant reads as a full-width editorial strip rather than a taller
+   version of the same card. */
+.wide .mediaLandscape {
+  aspect-ratio: 21 / 9;
+}
+
+.wide .mediaSquare {
+  aspect-ratio: 16 / 9;
+}
+
+.wide .mediaPortrait {
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 767px) {
+  .wide .mediaLandscape,
+  .wide .mediaSquare,
+  .wide .mediaPortrait {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.image {
+  object-fit: cover;
+  transition: transform var(--duration-standard) var(--ease-out);
+}
+
+/* Subtle desktop-only interaction. Mobile never depends on hover. */
+@media (hover: hover) {
+  .module:hover .image {
+    transform: scale(1.025);
+  }
+}
+
+.module:focus-visible .image {
+  transform: scale(1.025);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module:hover .image,
+  .module:focus-visible .image {
+    transform: none;
+  }
+}
+
+/* Metadata — always below the artwork, never over it. */
+.meta {
+  margin-top: var(--space-small);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.tags {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.brief {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  max-width: 46ch;
+}
