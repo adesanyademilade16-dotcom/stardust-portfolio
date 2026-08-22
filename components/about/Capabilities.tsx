@@ -22,21 +22,31 @@ function hasSupportingWork(label: string): boolean {
  */
 export function Capabilities() {
   return (
-    <section id="capabilities" className={styles.section} aria-label="Capabilities">
+    <section id="capabilities" className={`${styles.section} tone-surface`} aria-label="Capabilities">
       <div className="container">
-        <h2 className={`text-h2 ${styles.heading}`}>Capabilities</h2>
+        <div className={styles.header}>
+          <span className="section-index" aria-hidden="true">
+            04
+          </span>
+          <h2 className="text-h2">Capabilities</h2>
+        </div>
 
         <ul className={styles.list}>
-          {capabilities.map((label) => {
+          {capabilities.map((label, index) => {
             const supported = hasSupportingWork(label);
+            const number = String(index + 1).padStart(2, '0');
             return (
               <li key={label} className={styles.listItem}>
                 {supported ? (
-                  <Link href="/#full-work" className={`${styles.item} text-display-l`}>
-                    {label}
+                  <Link href="/#full-work" className={styles.item}>
+                    <span className={styles.itemIndex}>{number}</span>
+                    <span className="text-display-l">{label}</span>
                   </Link>
                 ) : (
-                  <span className={`${styles.item} text-display-l`}>{label}</span>
+                  <span className={styles.item}>
+                    <span className={styles.itemIndex}>{number}</span>
+                    <span className="text-display-l">{label}</span>
+                  </span>
                 )}
               </li>
             );

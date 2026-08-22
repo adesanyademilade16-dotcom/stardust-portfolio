@@ -3,8 +3,12 @@
   border-top: 1px solid var(--border-subtle);
 }
 
-.heading {
+.header {
   margin-bottom: var(--space-large);
+}
+
+.header h2 {
+  margin: 0;
 }
 
 .list {
@@ -22,9 +26,20 @@
 }
 
 .item {
-  display: block;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-medium);
   padding-block: var(--space-medium);
   color: var(--text-primary);
+}
+
+.itemIndex {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-primary);
+  flex-shrink: 0;
 }
 
 a.item {

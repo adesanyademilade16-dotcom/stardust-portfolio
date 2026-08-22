@@ -3,12 +3,58 @@
   border-top: 1px solid var(--border-subtle);
 }
 
-.intro {
+.header {
+  margin-bottom: var(--space-large);
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-large);
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: var(--space-major-section);
+    align-items: start;
+  }
+}
+
+.portrait {
+  position: relative;
+  width: 60%;
+  max-width: 260px;
+  aspect-ratio: 576 / 1280;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
+}
+
+@media (min-width: 768px) {
+  .portrait {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.portraitImage {
+  object-fit: cover;
+}
+
+.copy {
   display: flex;
   flex-direction: column;
-  gap: var(--space-medium);
+  gap: var(--space-major-section);
+}
+
+.copy > p {
   max-width: 640px;
-  margin-bottom: var(--space-major-section);
 }
 
 .grid {
