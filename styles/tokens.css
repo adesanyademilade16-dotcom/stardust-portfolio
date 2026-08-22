@@ -1,0 +1,67 @@
+/*
+  STARDUST DESIGN TOKENS
+  Source of truth: Phase 3 (Design System) + Phase 9 (Production spec).
+  Do not introduce new raw values elsewhere — extend this file instead.
+*/
+
+:root {
+  /* Color */
+  --background-primary: #f7f4ef;
+  --surface: #efeae2;
+  --text-primary: #17140f;
+  --text-secondary: #6b6459;
+  --border-subtle: #dad3c6;
+  --accent-primary: #c4512e;
+  --accent-secondary: #2e3a46;
+
+  /* Interactive states derived from the primitives above */
+  --interactive-hover: var(--accent-primary);
+  --interactive-active: var(--accent-secondary);
+  --focus-ring: var(--accent-secondary);
+
+  /* Radius — single value per Phase 3 §10 */
+  --radius: 4px;
+
+  /* Spacing — 8px base rhythm (Phase 3 §09) */
+  --space-micro: 8px;
+  --space-small: 16px;
+  --space-medium: 24px;
+  --space-medium-lg: 32px;
+  --space-large: 48px;
+  --space-section: 64px;
+  --space-major-section: 96px;
+  --space-hero: 128px;
+
+  /* Grid */
+  --grid-desktop-columns: 12;
+  --grid-tablet-columns: 8;
+  --grid-mobile-columns: 4;
+  --content-max-width: 1320px;
+  --outer-margin-desktop: 80px;
+  --outer-margin-tablet: 40px;
+  --outer-margin-mobile: 20px;
+  --gutter-desktop: 24px;
+  --gutter-tablet: 20px;
+  --gutter-mobile: 16px;
+
+  /* Motion timing — Phase 3 §23 / Phase 7 §09 */
+  --duration-micro: 120ms;
+  --duration-standard: 240ms;
+  --duration-reveal: 400ms;
+  --duration-major: 600ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Z-index — four flat layers, no deep stacking (Phase 3 §23) */
+  --z-base: 0;
+  --z-sticky-nav: 10;
+  --z-overlay-menu: 20;
+  --z-modal: 30;
+}
+
+/* Breakpoints (referenced in comments — CSS custom properties can't hold
+   media query ranges, so components use these literal values directly):
+   Mobile:  <768px
+   Tablet:  768px–1199px
+   Desktop: >=1200px
+*/
