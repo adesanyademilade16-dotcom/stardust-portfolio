@@ -15,15 +15,16 @@
 .fragment {
   position: absolute;
   background: var(--text-primary);
-  border-radius: 1px;
+  border-radius: 2px;
   opacity: 0;
   transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot));
-  animation: settle var(--duration-major) var(--ease-out) forwards;
+  animation: settle var(--duration-major) var(--ease-spring) forwards;
   animation-delay: var(--delay);
 }
 
 .fragment[data-accent='true'] {
-  background: var(--accent-primary);
+  background: var(--gradient-ember);
+  box-shadow: 0 0 24px rgba(224, 99, 44, 0.55);
 }
 
 @keyframes settle {
