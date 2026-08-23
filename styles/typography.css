@@ -2,7 +2,7 @@
   STARDUST TYPOGRAPHY SYSTEM
   Display: Space Grotesk (hero, H1, H2)
   Body/UI: Inter (body, nav, labels, metadata)
-  Editorial accent: Fraunces (sparingly — pull-quotes, About narrative only)
+  Editorial accent: Fraunces (sparingly — pull-quotes, About narrative, testimonials)
 */
 
 :root {
@@ -14,17 +14,17 @@
 .text-display-xl {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.75rem, 2rem + 3.5vw, 6rem);
-  line-height: 1.02;
-  letter-spacing: -0.01em;
+  font-size: clamp(2.75rem, 2rem + 3.5vw, 6.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
 }
 
 .text-display-l {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
 }
 
 .text-h1 {
@@ -37,8 +37,9 @@
 .text-h2 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
-  line-height: 1.15;
+  font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .text-h3 {
@@ -58,8 +59,8 @@
 .text-body-large {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-  line-height: 1.5;
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+  line-height: 1.55;
   max-width: 68ch;
 }
 
@@ -67,13 +68,13 @@
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.55;
+  line-height: 1.6;
   max-width: 72ch;
 }
 
 @media (max-width: 767px) {
   .text-body {
-    font-size: 1rem; /* mobile minimum per Phase 8 §09 — never shrink below 16px */
+    font-size: 1rem;
   }
 }
 
@@ -81,7 +82,7 @@
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 0.9375rem;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .text-caption {
@@ -105,7 +106,7 @@
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 1.2;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -121,6 +122,14 @@
   font-family: var(--font-editorial);
   font-weight: 400;
   font-style: italic;
-  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
-  line-height: 1.4;
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.75rem);
+  line-height: 1.45;
+}
+
+.text-stat {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 1.8rem + 1.8vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
