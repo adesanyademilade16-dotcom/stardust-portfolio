@@ -1,0 +1,113 @@
+.section {
+  padding-block: var(--space-major-section);
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  margin-bottom: var(--space-large);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-large);
+  flex-wrap: wrap;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.headerCopy {
+  max-width: 46ch;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gutter-mobile);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gutter-tablet);
+  }
+}
+
+.card {
+  position: relative;
+  padding: var(--space-large) var(--space-medium-lg) var(--space-medium-lg);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+  transition: transform var(--duration-standard) var(--ease-out),
+    border-color var(--duration-standard) var(--ease-out),
+    background var(--duration-standard) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    background: var(--surface-raised);
+  }
+}
+
+.quoteMark {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent-primary);
+  opacity: 0.6;
+}
+
+.quote {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: var(--space-medium);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-ember);
+  color: #140b06;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.personText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.role {
+  margin: 0;
+  color: var(--text-secondary);
+}
