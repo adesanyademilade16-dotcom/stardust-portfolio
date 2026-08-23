@@ -1,17 +1,13 @@
 import Image from 'next/image';
-import { ContentRequired } from '@/components/ui/ContentRequired';
+import { Reveal } from '@/components/ui/Reveal';
+import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { profile, education, experience } from '@/data/about';
+import { getAllProjects } from '@/data/projects';
 import styles from './About.module.css';
 
-/**
- * About (visual redesign pass).
- *
- * Content is unchanged from Step 7 — nothing here is invented. The portrait
- * now appears (it previously wasn't used anywhere), placed naturally in
- * the grid at its own native aspect ratio rather than as a circular avatar,
- * per the redesign brief's explicit instruction.
- */
 export function About() {
+  const categoryCount = new Set(getAllProjects().map((p) => p.category)).size;
+
   return (
     <section id="about" className={styles.section} aria-label="About">
       <div className="container">
@@ -23,7 +19,7 @@ export function About() {
         </div>
 
         <div className={styles.layout}>
-          <div className={styles.portrait}>
+          <Reveal variant="scale" className={styles.portrait}>
             <Image
               src="/images/general/profile.jpg"
               alt={`Portrait of ${profile.name}`}
@@ -31,21 +27,37 @@ export function About() {
               sizes="(max-width: 767px) 60vw, (max-width: 1199px) 32vw, 300px"
               className={styles.portraitImage}
             />
-          </div>
+            <span className={styles.portraitRing} aria-hidden="true" />
+          </Reveal>
 
           <div className={styles.copy}>
-            <p className="text-body-large">
-              <ContentRequired label="About — introduction statement" />
-            </p>
+            <Reveal>
+              <p className="text-body-large">{profile.introduction}</p>
+            </Reveal>
 
-            <div className={styles.grid}>
+            <Reveal delay={100} className={styles.statsRow}>
+              <div className={styles.statBlock}>
+                <AnimatedCounter value={getAllProjects().length} suffix="+" />
+                <p className="text-caption">Projects</p>
+              </div>
+              <div className={styles.statBlock}>
+                <AnimatedCounter value={categoryCount} />
+                <p className="text-caption">Categories</p>
+              </div>
+              <div className={styles.statBlock}>
+                <AnimatedCounter value={100} suffix="%" />
+                <p className="text-caption">Original concepts</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150} className={styles.grid}>
               <div className={styles.block}>
                 <p className="text-label" style={{ color: 'var(--text-secondary)' }}>
                   Education
                 </p>
-                <p className="text-h4">{profile.name}</p>
+                <p className="text-h4">{education.institution}</p>
                 <p className="text-body-small" style={{ color: 'var(--text-secondary)' }}>
-                  {education.program}, {education.institution}
+                  {education.program} · {education.year}
                 </p>
               </div>
 
@@ -56,7 +68,9 @@ export function About() {
                 <ul className={styles.experienceList}>
                   {experience.map((record) => (
                     <li key={record.organization} className={styles.experienceItem}>
-                      <p className="text-h4">{record.organization}</p>
+                      <p className="text-h4">
+                        {record.organization} <span style={{ color: 'var(--text-secondary)', fontWeight: 400 }}>— {record.role}</span>
+                      </p>
                       <p className="text-body-small" style={{ color: 'var(--text-secondary)' }}>
                         {record.focus} · {record.duration}
                       </p>
@@ -69,11 +83,9 @@ export function About() {
                 <p className="text-label" style={{ color: 'var(--text-secondary)' }}>
                   Design perspective
                 </p>
-                <p className="text-body">
-                  <ContentRequired label="About — design perspective statement" />
-                </p>
+                <p className="text-body">{profile.designPerspective}</p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

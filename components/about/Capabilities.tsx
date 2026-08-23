@@ -1,57 +1,34 @@
-import Link from 'next/link';
-import { getAllProjects } from '@/data/projects';
-import { capabilities } from '@/data/about';
+import { SkillBar } from '@/components/ui/SkillBar';
+import { skills } from '@/data/about';
 import styles from './Capabilities.module.css';
 
 /**
- * A capability only links out to the work grid once a published project's
- * category actually matches it — otherwise it renders as a plain
- * typographic statement. Never claims support the portfolio doesn't have.
- */
-function hasSupportingWork(label: string): boolean {
-  const normalized = label.toLowerCase();
-  return getAllProjects().some((project) => {
-    const category = project.category.toLowerCase();
-    return normalized.includes(category) || category.includes(normalized);
-  });
-}
-
-/**
- * Capabilities (Phase 9, Step 7). Typographic statement list — deliberately
- * not skill bars, percentage meters, or an icon grid.
+ * Capabilities — rendered as animated proficiency bars (self-rated),
+ * each filling in once scrolled into view.
  */
 export function Capabilities() {
   return (
     <section id="capabilities" className={`${styles.section} tone-surface`} aria-label="Capabilities">
+      <div className={`${styles.glowBlob} glow-blob`} aria-hidden="true" />
       <div className="container">
         <div className={styles.header}>
-          <span className="section-index" aria-hidden="true">
-            04
-          </span>
-          <h2 className="text-h2">Capabilities</h2>
+          <div>
+            <span className="section-index" aria-hidden="true">
+              04
+            </span>
+            <h2 className="text-h2">Capabilities</h2>
+          </div>
+          <p className={`text-body ${styles.headerCopy}`}>
+            Core strengths, self-rated against the work published in this portfolio — not a claim of mastery, a
+            honest read on where I&rsquo;m strongest today.
+          </p>
         </div>
 
-        <ul className={styles.list}>
-          {capabilities.map((label, index) => {
-            const supported = hasSupportingWork(label);
-            const number = String(index + 1).padStart(2, '0');
-            return (
-              <li key={label} className={styles.listItem}>
-                {supported ? (
-                  <Link href="/#full-work" className={styles.item}>
-                    <span className={styles.itemIndex}>{number}</span>
-                    <span className="text-display-l">{label}</span>
-                  </Link>
-                ) : (
-                  <span className={styles.item}>
-                    <span className={styles.itemIndex}>{number}</span>
-                    <span className="text-display-l">{label}</span>
-                  </span>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <div className={styles.list}>
+          {skills.map((skill, index) => (
+            <SkillBar key={skill.label} label={skill.label} level={skill.level} index={index + 1} />
+          ))}
+        </div>
       </div>
     </section>
   );
