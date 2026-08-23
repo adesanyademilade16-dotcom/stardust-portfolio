@@ -92,7 +92,9 @@
   transition: transform var(--duration-standard) var(--ease-out);
 }
 
-/* Subtle desktop-only interaction. Mobile never depends on hover. */
+/* Subtle desktop-only interaction. Mobile never depends on hover — this is
+   a supplementary hint, not a functionality requirement (the whole module
+   is already an accessible link). */
 @media (hover: hover) {
   .module:hover .image {
     transform: scale(1.025);
@@ -110,9 +112,43 @@
   }
 }
 
-/* Metadata — always below the artwork, never over it. */
+.viewProject {
+  position: absolute;
+  left: var(--space-small);
+  bottom: var(--space-small);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  background: var(--background-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--duration-standard) var(--ease-out),
+    transform var(--duration-standard) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .module:hover .viewProject {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.module:focus-visible .viewProject {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Metadata — always below the artwork, never over it. A hairline rule
+   separates artwork from the editorial metadata block underneath it,
+   rather than relying on margin alone. */
 .meta {
   margin-top: var(--space-small);
+  padding-top: var(--space-small);
+  border-top: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -125,7 +161,16 @@
 
 .tags {
   margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   color: var(--text-secondary);
+}
+
+.index {
+  color: var(--accent-primary);
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .brief {

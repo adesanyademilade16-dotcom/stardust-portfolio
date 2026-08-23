@@ -16,6 +16,9 @@ type ProjectModuleProps = {
   variant: ProjectModuleVariant;
   /** Marks the module as above-the-fold so its artwork loads eagerly. */
   priority?: boolean;
+  /** 1-based position — rendered as a tracked "01" style index, an
+   * editorial device rather than a real ranking claim. */
+  index?: number;
 };
 
 const ORIENTATION_CLASS: Record<Project['primaryImage']['orientation'], string> = {
@@ -36,7 +39,7 @@ const VARIANT_SIZES: Record<ProjectModuleVariant, string> = {
  * A single Featured Work entry. The entire module is one accessible link
  * through to the case study — no separate "view project" control, no modal.
  */
-export function ProjectModule({ project, variant, priority }: ProjectModuleProps) {
+export function ProjectModule({ project, variant, priority, index }: ProjectModuleProps) {
   const showDescription = variant !== 'compact' && Boolean(project.brief);
 
   return (
@@ -50,14 +53,20 @@ export function ProjectModule({ project, variant, priority }: ProjectModuleProps
           priority={priority}
           className={styles.image}
         />
+        <span className={styles.viewProject} aria-hidden="true">
+          View project →
+        </span>
       </div>
 
       <div className={styles.meta}>
-        <h3 className={`${styles.title} text-h3`}>{project.title}</h3>
         <p className={`${styles.tags} text-caption`}>
+          {typeof index === 'number' && (
+            <span className={styles.index}>{String(index).padStart(2, '0')}</span>
+          )}
           {project.category}
           {project.year ? ` · ${project.year}` : ''}
         </p>
+        <h3 className={`${styles.title} text-h3`}>{project.title}</h3>
         {showDescription && <p className={`${styles.brief} text-body-small`}>{project.brief}</p>}
       </div>
     </Link>

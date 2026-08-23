@@ -26,10 +26,13 @@ export function FeaturedWork() {
   const featured = getFeaturedProjects();
 
   return (
-    <section id="work" className={styles.section} aria-label="Featured work">
+    <section id="work" className={styles.section} aria-label="Selected work">
       <div className="container">
         <div className={styles.header}>
-          <h2 className="text-h2">Featured Work</h2>
+          <span className="section-index" aria-hidden="true">
+            01
+          </span>
+          <h2 className="text-h2">Selected Work</h2>
         </div>
 
         {featured.length > 0 ? (
@@ -39,6 +42,7 @@ export function FeaturedWork() {
                 key={project.slug}
                 project={project}
                 variant={getVariant(index)}
+                index={index + 1}
                 priority={index === 0}
               />
             ))}

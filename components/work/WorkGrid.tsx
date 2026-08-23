@@ -56,9 +56,12 @@ export function WorkGrid() {
   const groups = groupByCollection(projects);
 
   return (
-    <section id="full-work" className={styles.section} aria-label="Full work">
+    <section id="full-work" className={`${styles.section} tone-surface`} aria-label="Full work">
       <div className="container">
         <div className={styles.header}>
+          <span className="section-index" aria-hidden="true">
+            02
+          </span>
           <h2 className="text-h2">Full Work</h2>
         </div>
 
@@ -67,9 +70,15 @@ export function WorkGrid() {
             Additional case studies will appear here as they&rsquo;re published.
           </p>
         ) : (
-          groups.map((group) => (
+          groups.map((group, groupIndex) => (
             <div key={group.collection ?? '__general'} className={styles.collectionBlock}>
-              {group.collection && <p className={`text-label ${styles.collectionLabel}`}>{group.collection}</p>}
+              {group.collection && (
+                <div className={styles.collectionHeader}>
+                  <span className={styles.collectionIndex}>{String(groupIndex + 1).padStart(2, '0')}</span>
+                  <p className="text-label">{group.collection}</p>
+                  <span className={styles.collectionRule} aria-hidden="true" />
+                </div>
+              )}
               <div className={`grid ${styles.grid}`}>
                 {group.projects.map((project) => (
                   <ProjectModule
